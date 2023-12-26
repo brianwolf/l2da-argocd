@@ -27,7 +27,7 @@ metadata:
   namespace: openshift-operators
 spec:
 
-  description: Project to dev
+  description: Project to dev 3scale
 
   clusterResourceWhitelist:
     - group: '*'
