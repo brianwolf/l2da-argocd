@@ -13,13 +13,13 @@ spec:
     path: .devops/openshift/app/kustomize/overlays/desa/
   
   destination:
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc
     namespace: msdesa
 
-  syncPolicy:
-    automated:
-      prune: true
-      allowEmpty: true
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     allowEmpty: true
 
 
 ---
@@ -39,10 +39,10 @@ spec:
     path: .devops/openshift/3scale/desa/
   
   destination:
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc
     namespace: 3scale
 
-  syncPolicy:
-    automated:
-      prune: true
-      allowEmpty: true
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     allowEmpty: true
