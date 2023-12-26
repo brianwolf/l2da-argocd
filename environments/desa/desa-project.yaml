@@ -2,17 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: desa-apps
-  namespace: argocd
+  namespace: openshift-operators
 spec:
 
   description: Project to dev
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   
   sourceRepos:
   - '*'
   
   destinations:
   - namespace: msdesa
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc
 
 ---
 
@@ -20,14 +24,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: desa-3scale
-  namespace: argocd
+  namespace: openshift-operators
 spec:
 
   description: Project to dev
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   
   sourceRepos:
   - '*'
   
   destinations:
   - namespace: 3scale
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc

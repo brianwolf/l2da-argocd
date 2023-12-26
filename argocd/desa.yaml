@@ -2,17 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: argocd-desa
-  namespace: argocd
+  namespace: openshift-operators
 spec:
 
   description: Project to desa
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
   
   sourceRepos:
   - '*'
   
   destinations:
   - namespace: argocd
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc
 
 ---
 
@@ -20,18 +24,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argocd-desa
-  namespace: argocd
+  namespace: openshift-operators
 spec:
   
   project: argocd-desa
   
   source:
-    repoURL: https://github.com/lasegunda/argocd-noprod.git
+    repoURL: https://github.com/brianwolf/l2da-argocd.git
     targetRevision: HEAD
-    path: /environments/desa/
+    path: environments/desa/
   
   destination:
-    server: https://openshift.desa.svc
+    server: https://kubernetes.default.svc
     namespace: argocd
 
   syncPolicy:
