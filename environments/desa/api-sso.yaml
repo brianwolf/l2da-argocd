@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: api-sso-desa-app
-  namespace: argocd
+  namespace: openshift-operators
 spec:
   
   project: desa-apps
   
   source:
-    repoURL: https://github.com/lasegunda/api-sso.git
+    repoURL: https://github.com/brianwolf/l2da-app.git
     targetRevision: HEAD
-    path: .openshift/app/kustomize/overlays/desa/
+    path: .devops/openshift/app/kustomize/overlays/desa/
   
   destination:
     server: https://openshift.desa.svc
@@ -28,15 +28,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: api-sso-desa-3scale
-  namespace: argocd
+  namespace: openshift-operators
 spec:
   
   project: desa-3scale
   
   source:
-    repoURL: https://github.com/lasegunda/api-sso.git
+    repoURL: https://github.com/brianwolf/l2da-app.git
     targetRevision: HEAD
-    path: .openshift/3scale/desa/
+    path: .devops/openshift/3scale/desa/
   
   destination:
     server: https://openshift.desa.svc
