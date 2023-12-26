@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: qa-project
+  namespace: argocd
+spec:
+
+  description: Project to qa
+  
+  sourceRepos:
+  - '*'
+  
+  destinations:
+  - namespace: qa
+    server: https://openshift.qa.svc

@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-sso-desa-app
+  namespace: argocd
+spec:
+  
+  project: desa-apps
+  
+  source:
+    repoURL: https://github.com/lasegunda/api-sso.git
+    targetRevision: HEAD
+    path: .openshift/app/kustomize/overlays/desa/
+  
+  destination:
+    server: https://openshift.desa.svc
+    namespace: msdesa
+
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-sso-desa-3scale
+  namespace: argocd
+spec:
+  
+  project: desa-3scale
+  
+  source:
+    repoURL: https://github.com/lasegunda/api-sso.git
+    targetRevision: HEAD
+    path: .openshift/3scale/desa/
+  
+  destination:
+    server: https://openshift.desa.svc
+    namespace: 3scale
+
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true

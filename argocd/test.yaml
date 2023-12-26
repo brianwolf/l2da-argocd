@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: test
+  namespace: argocd
+spec:
+
+  description: Project to test
+  
+  sourceRepos:
+  - '*'
+  
+  destinations:
+  - namespace: argocd
+    server: https://openshift.test.svc
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+spec:
+  
+  project: argocd-test-project
+  
+  source:
+    repoURL: https://github.com/lasegunda/argocd-noprod.git
+    targetRevision: HEAD
+    path: /environments/test/
+  
+  destination:
+    server: https://openshift.test.svc
+    namespace: argocd
+
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+

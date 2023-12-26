@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: desa-apps
+  namespace: argocd
+spec:
+
+  description: Project to dev
+  
+  sourceRepos:
+  - '*'
+  
+  destinations:
+  - namespace: msdesa
+    server: https://openshift.desa.svc
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: desa-3scale
+  namespace: argocd
+spec:
+
+  description: Project to dev
+  
+  sourceRepos:
+  - '*'
+  
+  destinations:
+  - namespace: 3scale
+    server: https://openshift.desa.svc
