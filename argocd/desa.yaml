@@ -15,7 +15,7 @@ spec:
   - '*'
   
   destinations:
-  - namespace: argocd
+  - namespace: openshift-operators
     server: https://kubernetes.default.svc
 
 ---
@@ -36,7 +36,7 @@ spec:
   
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: openshift-operators
 
   syncPolicy:
     automated:
